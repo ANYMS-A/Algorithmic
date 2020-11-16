@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
+    :author: Allan
+    :copyright: © 2020 Yalun Hu <allancodeman@163.com>
     :license: MIT, see LICENSE for more details.
 """
 from flask_ckeditor import CKEditorField
@@ -11,7 +10,7 @@ from wtforms import StringField, SubmitField, SelectField, TextAreaField, Valida
     BooleanField, PasswordField
 from wtforms.validators import DataRequired, Email, Length, Optional, URL
 
-from bluelog.models import Category
+from algorithmic.models import Category
 
 
 class LoginForm(FlaskForm):

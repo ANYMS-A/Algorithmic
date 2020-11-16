@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
+    :author: Allan
+    :copyright: © 2020 Yalun Hu <allancodeman@163.com>
     :license: MIT, see LICENSE for more details.
 """
 from datetime import datetime
@@ -10,8 +9,10 @@ from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from bluelog.extensions import db
+from algorithmic.extensions import db
 
+
+# TODO Admin Database doesn't save the password itself, but the hash_code of the password
 
 class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
+    :author: Allan
+    :copyright: © 2020 Yalun Hu <allancodeman@163.com>
     :license: MIT, see LICENSE for more details.
 """
 from flask import render_template, flash, redirect, url_for, request, current_app, Blueprint, abort, make_response
 from flask_login import current_user
 
-from bluelog.emails import send_new_comment_email, send_new_reply_email
-from bluelog.extensions import db
-from bluelog.forms import CommentForm, AdminCommentForm
-from bluelog.models import Post, Category, Comment
-from bluelog.utils import redirect_back
+from algorithmic.emails import send_new_comment_email, send_new_reply_email
+from algorithmic.extensions import db
+from algorithmic.forms import CommentForm, AdminCommentForm
+from algorithmic.models import Post, Category, Comment
+from algorithmic.utils import redirect_back
 
 blog_bp = Blueprint('blog', __name__)
 

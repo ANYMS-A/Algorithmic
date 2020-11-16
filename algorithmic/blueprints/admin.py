@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
+    :author: Allan
+    :copyright: © 2020 Yalun Hu <allancodeman@163.com>
     :license: MIT, see LICENSE for more details.
 """
 import os
@@ -11,10 +10,10 @@ from flask import render_template, flash, redirect, url_for, request, current_ap
 from flask_login import login_required, current_user
 from flask_ckeditor import upload_success, upload_fail
 
-from bluelog.extensions import db
-from bluelog.forms import SettingForm, PostForm, CategoryForm, LinkForm
-from bluelog.models import Post, Category, Comment, Link
-from bluelog.utils import redirect_back, allowed_file
+from algorithmic.extensions import db
+from algorithmic.forms import SettingForm, PostForm, CategoryForm, LinkForm
+from algorithmic.models import Post, Category, Comment, Link
+from algorithmic.utils import redirect_back, allowed_file
 
 admin_bp = Blueprint('admin', __name__)
 

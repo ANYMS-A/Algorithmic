@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
+    :author: Allan
+    :copyright: © 2020 Yalun Hu <allancodeman@163.com>
     :license: MIT, see LICENSE for more details.
 """
 from flask import url_for
 
-from bluelog.models import Post, Category, Link, Comment
-from bluelog.extensions import db
+from algorithmic.models import Post, Category, Link, Comment
+from algorithmic.extensions import db
 
 from tests.base import BaseTestCase
 

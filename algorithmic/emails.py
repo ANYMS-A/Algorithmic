@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
+    :author: Allan
+    :copyright: © 2020 Yalun Hu <allancodeman@163.com>
     :license: MIT, see LICENSE for more details.
 """
 from threading import Thread
@@ -10,7 +9,7 @@ from threading import Thread
 from flask import url_for, current_app
 from flask_mail import Message
 
-from bluelog.extensions import mail
+from algorithmic.extensions import mail
 
 
 def _send_async_mail(app, message):
