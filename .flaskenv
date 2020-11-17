@@ -1,2 +1,2 @@
-FLASK_APP=bluelog
+FLASK_APP=algorithmic
 FLASK_ENV=development
