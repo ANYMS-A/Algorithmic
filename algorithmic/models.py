@@ -11,8 +11,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from algorithmic.extensions import db
 
+"""
+Define database tables for our blog system
+Admin: info of the admin of the blog, which means the info of yourself
+Category: the category of my post
+Post: the post of the whole blog
+Comment: comment by others
+"""
 
-# TODO Admin Database doesn't save the password itself, but the hash_code of the password
 
 class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +30,7 @@ class Admin(db.Model, UserMixin):
     about = db.Column(db.Text)
 
     def set_password(self, password):
+        # Admin Database doesn't save the password itself, but the hash_code of the password
         self.password_hash = generate_password_hash(password)
 
     def validate_password(self, password):
