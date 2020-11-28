@@ -40,6 +40,7 @@ def settings():
 @admin_bp.route('/post/manage')
 @login_required
 def manage_post():
+    # default page index is 1
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
@@ -54,6 +55,7 @@ def new_post():
     if form.validate_on_submit():
         title = form.title.data
         body = form.body.data
+        # form.category.data is an int type
         category = Category.query.get(form.category.data)
         post = Post(title=title, body=body, category=category)
         # same with:

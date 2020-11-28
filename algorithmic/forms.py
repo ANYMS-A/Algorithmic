@@ -45,6 +45,7 @@ class CategoryForm(FlaskForm):
     submit = SubmitField()
 
     def validate_name(self, field):
+        # TODO why use field.data? what is the type of field.
         if Category.query.filter_by(name=field.data).first():
             raise ValidationError('Name already in use.')
 
