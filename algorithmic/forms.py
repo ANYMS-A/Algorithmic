@@ -7,7 +7,10 @@
 from flask_ckeditor import CKEditorField
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField, ValidationError, HiddenField, \
-    BooleanField, PasswordField
+    BooleanField, PasswordField, FileField
+
+from flask_wtf.file import FileAllowed
+
 from wtforms.validators import DataRequired, Email, Length, Optional, URL
 
 from algorithmic.models import Category
@@ -21,6 +24,7 @@ class LoginForm(FlaskForm):
 
 
 class SettingForm(FlaskForm):
+    avatar = FileField('Upload New Avatar', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     name = StringField('Name', validators=[DataRequired(), Length(1, 30)])
     blog_title = StringField('Blog Title', validators=[DataRequired(), Length(1, 60)])
     blog_sub_title = StringField('Blog Sub Title', validators=[DataRequired(), Length(1, 100)])

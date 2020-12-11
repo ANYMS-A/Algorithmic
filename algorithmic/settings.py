@@ -42,6 +42,7 @@ class BaseConfig(object):
     # ('theme name', 'display name')
     BLUELOG_THEMES = {'perfect_blue': 'Perfect Blue', 'black_swan': 'Black Swan'}
     BLUELOG_SLOW_QUERY_THRESHOLD = 1
+    BLUELOG_AVATAR_IMG_PATH = os.path.join(basedir, 'bluelog', 'static')  # the path which save the avatar of the admin
 
     BLUELOG_UPLOAD_PATH = os.path.join(basedir, 'uploads')
     BLUELOG_ALLOWED_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']

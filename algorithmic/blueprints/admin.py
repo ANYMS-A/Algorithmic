@@ -23,6 +23,12 @@ admin_bp = Blueprint('admin', __name__)
 def settings():
     form = SettingForm()
     if form.validate_on_submit():
+        # If avatar is not none, save the new avatar
+        if form.avatar.data:
+            avatar_file = form.avatar.data
+            avatar_save_name = "avatar.jpg"
+            avatar_file.save(os.path.join(current_app.config['BLUELOG_AVATAR_IMG_PATH'], avatar_save_name))
+
         current_user.name = form.name.data
         current_user.blog_title = form.blog_title.data
         current_user.blog_sub_title = form.blog_sub_title.data

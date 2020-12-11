@@ -110,3 +110,7 @@ logs/*
 !logs/.gitkeep
 uploads/*
 !uploads/.gitkeep
+
+# avatar
+/algorithmic/static/avatar.jpg
+
