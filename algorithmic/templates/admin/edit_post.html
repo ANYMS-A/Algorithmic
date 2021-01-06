@@ -1,17 +1,81 @@
 {% extends 'base.html' %}
-{% from 'bootstrap/form.html' import render_form %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static',filename='editormd/css/editormd.css') }}"/>
+{% endblock %}
 
 {% block title %}Edit Post{% endblock %}
 
 {% block content %}
     <div class="page-header">
-        <h1>Edit Post</h1>
+        <h1>Edit Your Post</h1>
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title.label }}
+                {% if form.title.errors %}
+                    {% for e in form.title.errors %}
+                        <p class="help-block">{{ e }}</p>
+                    {% endfor %}
+                {% endif %}
+                {{ form.title(class_='form-control') }}
+            </div>
+
+            <div class="form-group">
+                {{ form.category.label }}
+                {% if form.category.errors %}
+                    {% for e in form.category.errors %}
+                        <p class="help-block">{{ e }}</p>
+                    {% endfor %}
+                {% endif %}
+                {{ form.category(class_='form-control') }}
+            </div>
+
+
+            <div class="form-group">
+                {{ form.body.label }}
+                {% if form.body.errors %}
+                    {% for e in form.body.errors %}
+                        <p class="help-block">{{ e }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <div id="fancy-editormd" class="editormd">
+                    {{ form.body(style="display:none;") }}
+                </div>
+
+            </div>
+
+            {{ form.submit }}
+
+        </form>
     </div>
-    {{ render_form(form) }}
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
-    <script type="text/javascript" src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script>
-    {{ ckeditor.config(name='body') }}
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='editormd/editormd.min.js') }}"></script>
+    <script type="text/javascript">
+        var Editor;
+
+        $(function () {
+            Editor = editormd("fancy-editormd", {
+                width: "100%",
+                height: 740,
+                syncScrolling: "single",
+                path: "{{ url_for('static',filename='editormd/lib/') }}",
+                saveHTMLToTextarea : true,
+                theme : "dark",
+                previewTheme : "dark",
+                editorTheme : "pastel-on-dark",
+                tex : true, // 支持数学公式编辑
+                flowChart : true,             // 开启流程图支持，默认关闭
+                sequenceDiagram : true,
+                imageUpload : true,
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL : "./php/upload.php",
+            });
+        });
+    </script>
 {% endblock %}

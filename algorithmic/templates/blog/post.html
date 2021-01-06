@@ -2,6 +2,12 @@
 {% from 'bootstrap/form.html' import render_form %}
 {% from 'bootstrap/pagination.html' import render_pagination %}
 
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static',filename='editormd/css/editormd.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='editormd/css/editormd.preview.css') }}" />
+{% endblock %}
+
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
@@ -27,7 +33,9 @@
     </div>
     <div class="row">
         <div class="col-sm-8">
-            {{ post.body|safe }}
+            <div id="editormd-viewer" style="background-color: lightgray" class="editormd-preview-theme-dark">
+                <textarea id="append-test" style="display:none;">{{ post.body }}</textarea>
+            </div>
             <hr>
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".postLinkModal">Share
             </button>
@@ -137,4 +145,35 @@
             {% include "blog/_sidebar.html" %}
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='editormd/lib/marked.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='editormd/lib/prettify.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='editormd/lib/raphael.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='editormd/lib/underscore.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='editormd/lib/sequence-diagram.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='editormd/lib/flowchart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='editormd/lib/jquery.flowchart.min.js') }}"></script>
+
+    <script src="{{ url_for('static',filename='editormd/editormd.min.js') }}"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        var EditormdViewer;
+
+        EditormdViewer = editormd.markdownToHTML("editormd-viewer", {
+            // markdown        : $("#append-test").text(),
+            htmlDecode      : "style,script,iframe",  // you can filter tags decode
+            tex             : true,  // 默认不解析
+            flowChart       : true,  // 默认不解析
+            sequenceDiagram : true,  // 默认不解析
+            atLink          : false,
+        });
+    });
+    </script>
 {% endblock %}
