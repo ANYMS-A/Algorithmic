@@ -30,13 +30,20 @@ def settings():
             avatar_file.save(os.path.join(current_app.config['BLUELOG_AVATAR_IMG_PATH'], avatar_save_name))
 
         current_user.name = form.name.data
+        current_user.school = form.school.data
+        current_user.email = form.email.data
+        current_user.location = form.location.data
         current_user.blog_title = form.blog_title.data
         current_user.blog_sub_title = form.blog_sub_title.data
         current_user.about = form.about.data
         db.session.commit()
         flash('Setting updated.', 'success')
         return redirect(url_for('blog.index'))
+
     form.name.data = current_user.name
+    form.school.data = current_user.school
+    form.email.data = current_user.email
+    form.location.data = current_user.location
     form.blog_title.data = current_user.blog_title
     form.blog_sub_title.data = current_user.blog_sub_title
     form.about.data = current_user.about

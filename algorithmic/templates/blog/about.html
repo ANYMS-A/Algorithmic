@@ -11,9 +11,31 @@
             {{ admin.about|safe }}
         </div>
         <div class="col-sm-4 sidebar">
-            <p style="text-align: center">
-            <img src="{{ url_for('static', filename="avatar.jpg") }}" width="100%" height="100%" />
-            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>
+                        Author:<br>
+                        <small class="text-muted">{{ admin.name }}</small>
+                    </h6>
+                    <h6>
+                        Graduated from:<br>
+                        <small class="text-muted">{{ admin.school }}</small>
+                    </h6>
+                    <h6>
+                        Email:<br>
+                        <small class="text-muted">{{ admin.email }}</small>
+                    </h6>
+                    <h6>
+                        Now living in:<br>
+                        <small class="text-muted">{{ admin.location }}</small>
+                    </h6>
+                </div>
+                <div class="col-md-6">
+                    <p style="text-align: right">
+                        <img src="{{ url_for('static', filename="avatar.jpg") }}" width="100%" height="100%" />
+                    </p>
+                </div>
+            </div>
             {% include "blog/_sidebar.html" %}
         </div>
     </div>

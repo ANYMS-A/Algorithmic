@@ -26,6 +26,9 @@ class LoginForm(FlaskForm):
 class SettingForm(FlaskForm):
     avatar = FileField('Upload New Avatar', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     name = StringField('Name', validators=[DataRequired(), Length(1, 30)])
+    school = StringField('School', validators=[DataRequired(), Length(1, 60)])
+    email = StringField('Email', validators=[DataRequired(), Length(1, 30)])
+    location = StringField('Now living in', validators=[DataRequired(), Length(1, 30)])
     blog_title = StringField('Blog Title', validators=[DataRequired(), Length(1, 60)])
     blog_sub_title = StringField('Blog Sub Title', validators=[DataRequired(), Length(1, 100)])
     about = CKEditorField('About Page', validators=[DataRequired()])
