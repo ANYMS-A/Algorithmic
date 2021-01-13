@@ -49,6 +49,7 @@ def fake_posts(count=50):
         post = Post(
             title=fake.sentence(),
             body=fake.text(2000),
+            cover_img_url="/static/cover_image/default.jpg",
             category=Category.query.get(random.randint(1, Category.query.count())),
             timestamp=fake.date_time_this_year()
         )

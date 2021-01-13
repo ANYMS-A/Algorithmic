@@ -67,10 +67,10 @@ def new_post():
     form = PostForm()
     if form.validate_on_submit():
         title = form.title.data
+        cover_img_url = form.cover_img_url.data
         body = form.body.data
-        # form.category.data is an int type
         category = Category.query.get(form.category.data)
-        post = Post(title=title, body=body, category=category)
+        post = Post(title=title, cover_img_url=cover_img_url, body=body, category=category)
         # same with:
         # category_id = form.category.data
         # post = Post(title=title, body=body, category_id=category_id)
@@ -88,12 +88,14 @@ def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
     if form.validate_on_submit():
         post.title = form.title.data
+        post.cover_img_url = form.cover_img_url.data
         post.body = form.body.data
         post.category = Category.query.get(form.category.data)
         db.session.commit()
         flash('Post updated.', 'success')
         return redirect(url_for('blog.show_post', post_id=post.id))
     form.title.data = post.title
+    form.cover_img_url.data = post.cover_img_url
     form.body.data = post.body
     form.category.data = post.category_id
     return render_template('admin/edit_post.html', form=form)

@@ -36,7 +36,7 @@ class BaseConfig(object):
     MAIL_DEFAULT_SENDER = ('Bluelog Admin', MAIL_USERNAME)
 
     BLUELOG_EMAIL = os.getenv('BLUELOG_EMAIL')
-    BLUELOG_POST_PER_PAGE = 10
+    BLUELOG_POST_PER_PAGE = 8
     BLUELOG_MANAGE_POST_PER_PAGE = 15
     BLUELOG_COMMENT_PER_PAGE = 15
     # ('theme name', 'display name')
