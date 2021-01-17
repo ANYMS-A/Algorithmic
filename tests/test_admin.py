@@ -255,6 +255,9 @@ class AdminTestCase(BaseTestCase):
     def test_blog_setting(self):
         response = self.client.post(url_for('admin.settings'), data=dict(
             name='Grey Li',
+            school='soton',
+            email='@163.com',
+            location='shanghai',
             blog_title='My Blog',
             blog_sub_title='Just some raw ideas.',
             bio='I am ...',
