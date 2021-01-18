@@ -1,6 +1,6 @@
 # Algorithmic
 
-*A personal blog based on Flask*
+*A personal blog system based on Flask*
 
 > Most of the codes are based on the
 > Example application for 
@@ -25,8 +25,8 @@ While Bluelog uses a WYSIWYG editor named "CK_Editor".
 
 clone:
 ```
-$ git clone https://github.com/crissallan/algorithmic.git
-$ cd algorithmic
+$ git clone https://github.com/crissallan/Algorithmic.git
+$ cd Algorithmic
 ```
 create & activate virtual env then install dependency:
 
@@ -48,6 +48,9 @@ Test account:
 
 * username: `admin`
 * password: `helloflask`
+
+## Deployment
+To deploy the blog system on a Linux server, it is recommended to use Gunicorn + Nginx. 
 
 ## License
 
