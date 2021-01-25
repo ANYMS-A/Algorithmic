@@ -2,6 +2,9 @@
 
 *A personal blog system based on Flask*
 
+Please visit https://www.algorithmic.cn to see how it looks like.
+
+NOTE:  
 > Most of the codes are based on the
 > Example application for 
 >*[Python Web Development with Flask](http://helloflask.com/en/book)* (《[Flask Web 开发实战](http://helloflask.com/book)》).
@@ -9,6 +12,7 @@
 
 The Demo of the book above is here: http://bluelog.helloflask.com If you want to learn Flask, it is highly recommended
 that you read this book! 
+
 
 Algorithmic has some differences between Bluelog:
 
