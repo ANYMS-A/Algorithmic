@@ -15,8 +15,6 @@ from wtforms.validators import DataRequired, Email, Length, Optional, URL
 
 from algorithmic.models import Category
 
-from flask import url_for
-
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(1, 20)])
@@ -48,7 +46,6 @@ class PostForm(FlaskForm):
         super(PostForm, self).__init__(*args, **kwargs)
         self.category.choices = [(category.id, category.name)
                                  for category in Category.query.order_by(Category.name).all()]
-        self.cover_img_url.data = url_for("static", filename="cover_image/default.jpg")
 
 
 class CategoryForm(FlaskForm):
